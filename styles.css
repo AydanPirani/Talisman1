@@ -1,0 +1,28 @@
+table {
+  border-spacing: 0px;
+  background-color: black;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  background-color: red;
+  font-size: 18px;
+  font-weight: bold;
+  padding-right: 20px;
+  padding-left: 20px;
+  float: right;
+}
+
+div {
+  width: 30px;
+  height: 30px;
+}
+
+.wall {
+  background-color: gray;
+}
+
+.empty{
+  background-color: white;
+}
