@@ -1,10 +1,6 @@
-cells = [10,10]
-f = open("table.html", "w")
-f.write("<table>")
-for x in range (1,+cells[0]):
-    f.write("<tr>")
-    for y in range (1,1+cells[0]):
-        temp = '<td id='+str(x)+","+str(y)+'> <div class="empty"></div> </td>'
-        f.write(temp)
-    f.write("</tr>")
-f.write("</table>")
+temp = ""
+for i in range(-2,3):
+    s = "-"+str(abs(i)) if i < 0 else "+"+str(i)
+    temp += "is_wall(y_coord"+s+",2)&&is_wall(y_coord"+s+",3)||"
+
+print(temp)
