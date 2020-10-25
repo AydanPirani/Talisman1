@@ -1,6 +1,6 @@
 x_cells = Math.round(screen.width / 30)
 y_cells = Math.round(screen.height / 30)
-generate_table(x_cells, y_cells)
+randomize();
 
 x = 1;
 y = Math.round(y_cells / 2);
@@ -66,9 +66,10 @@ function check_key(event) {
 
 }
 
-function randomize() {
-  console.log("to be randomized")
-  change_to_wall(1, 1)
+function randomize(){
+  x = 1;
+  y = Math.round(y_cells / 2);
+  generate_table(x_cells, y_cells)
 }
 
 function change_to_wall(x, y) {
