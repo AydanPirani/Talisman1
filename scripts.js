@@ -65,6 +65,7 @@ function generate_table(x, y) {
 }
 
 function generate_walls(LL, UR) {
+  // generate_table(x_cells, y_cells)
   // console.log(LL + "\n" + UR)
   x_l = Math.abs(LL[0] - UR[0])
   y_l = Math.abs(LL[1] - UR[1])
@@ -129,6 +130,8 @@ function change_to_empty(x, y) {
 }
 
 function move(x, y) {
+  generate_table(x_cells,y_cells)
   generate_walls([1, y_cells], [x_cells, 1])
   document.getElementById(x + "," + y).innerHTML = '<div class="user"></div>';
+
 }
