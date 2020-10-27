@@ -44,7 +44,6 @@ function randomize() {
   x = 1;
   y = Math.round(y_cells / 2);
   generate_table(x_cells, y_cells)
-  generate_walls([1, y_cells], [x_cells, 1])
 }
 
 function generate_table(x, y) {
@@ -81,6 +80,8 @@ function generate_walls(LL, UR) {
     for (var i = UR[1]; i < LL[1]; i++) {
       change_to_wall(x_coord, i)
     }
+    temp = Math.round(Math.abs(UR[1]-LL[1])*Math.random())+1
+    change_to_empty(x_coord, temp)
   }
 
   //Changes a whole column to a wall
@@ -88,6 +89,8 @@ function generate_walls(LL, UR) {
     for (var i = LL[0]; i < UR[0]; i++) {
       change_to_wall(i, y_coord)
     }
+    temp = Math.round(Math.abs(UR[0]-LL[0])*Math.random())+1
+    change_to_empty(temp, y_coord)
   }
 
   if (x_c && y_c) {
@@ -126,5 +129,6 @@ function change_to_empty(x, y) {
 }
 
 function move(x, y) {
+  generate_walls([1, y_cells], [x_cells, 1])
   document.getElementById(x + "," + y).innerHTML = '<div class="user"></div>';
 }
