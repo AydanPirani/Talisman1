@@ -55,6 +55,7 @@ function randomize() {
   x = 1;
   y = Math.round(y_cells / 2);
   generate_table(x_cells, y_cells)
+  generate_walls([1, y_cells], [x_cells, 1])
 }
 
 function generate_table(x, y) {
