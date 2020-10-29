@@ -12,7 +12,7 @@ move(x, y)
 
 document.onkeydown = check_key;
 
-function chose() { 
+function chose() {
   color = document.getElementById("color").value
   console.log(color)
   document.getElementById("choose").style.display = "none"
@@ -60,21 +60,32 @@ function randomize() {
 
 function generate_table(x, y) {
   var temp = "<table>";
-  var c = "empty"
   for (var i = 1; i < y + 1; i++) {
     temp += "<tr>"
     for (var j = 1; j < x + 1; j++) {
-      if (j == 1 || j == x || i == 1 || i == y) {
-        c = "wall"
-      } else {
-        c = "empty"
-      }
-      temp += '<td id=' + j + "," + i + '><div class="' + c + '"></div></td>'
+      temp += '<td id=' + j + "," + i + '><div class="empty"></div></td>'
     }
     temp += "</tr>"
   }
   document.getElementById("table").innerHTML = temp + "</table>"
 }
+
+function generate_borders(x, y) {
+
+  //Changes a whole row to a wall
+  for (var i = 1; i <= x; i++) {
+    change_to_wall(i, 1)
+    change_to_wall(i, y)
+  }
+
+  //Changes a whole column to a wall
+  for (var i = 1; i <= y; i++) {
+    change_to_wall(1, i)
+    change_to_wall(x, i)
+  }
+
+}
+
 
 function generate_walls(LL, UR) {
   // generate_table(x_cells, y_cells)
@@ -142,6 +153,7 @@ function change_to_empty(x, y) {
 function move(x, y) {
   generate_table(x_cells,y_cells)
   generate_walls([1, y_cells], [x_cells, 1])
+  generate_borders(x_cells,y_cells)
   document.getElementById(x + "," + y).innerHTML = '<div class="user"></div>';
   document.querySelector(".user").style.backgroundColor = color
 }
