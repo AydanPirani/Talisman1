@@ -52,7 +52,7 @@ function check_key(event) {
     y = n_y;
   }
 
-  if (x!=1&&is_wall(x,y-1)&&is_wall(x,y+1)&&is_wall(x+1,y)&&is_wall(x+1,y)){
+  if (is_wall(x,y-1)&&is_wall(x,y+1)&&is_wall(x-1,y)&&is_wall(x+1,y)){
     document.getElementById("lost").style.display = "block"
   }
 
@@ -60,7 +60,9 @@ function check_key(event) {
 
 function randomize() {
   document.getElementById("start").style.display = "none"
+  document.getElementById("won").style.display = "none"
   document.getElementById("lost").style.display = "none"
+
   x = 1;
   y = Math.round(y_cells / 2);
   move(x, y)
@@ -163,8 +165,10 @@ function move(x, y) {
   generate_walls([1, y_cells], [x_cells, 1])
   generate_borders(x_cells,y_cells)
   document.getElementById(x + "," + y).innerHTML = '<div class="user"></div>';
-
   document.getElementById(x_cells + "," + Math.round(y_cells / 2)).innerHTML = '<div class="empty" style="background-color:#1db331"></div>'
   // style.backgroundColor = "#1db331";
+  if(x==x_cells && y==Math.round(y_cells/2)) {
+    document.getElementById("won").style.display = "block"
+  }
   document.querySelector(".user").style.backgroundColor = color
 }
