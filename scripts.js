@@ -8,8 +8,9 @@ color = ""
 while(color != ""){
   setTimeout(function() {console.log("waiting") }, 500);
 }
-move(x, y)
 
+move(x, y)
+document.getElementById("start").style.display = "block"
 document.onkeydown = check_key;
 
 function chose() {
@@ -34,9 +35,11 @@ function check_key(event) {
     n_x -= 1
   } else if (event.keyCode == '39') { //right
     n_x += 1
+  } else {
+    return
   }
 
-  if (document.getElementById(n_x + "," + n_y).innerHTML == '<div class="wall"></div>') {
+  if (is_wall(n_x, n_y)) {
     //hit wall
     t.className = "shake-hard shake-constant";
     setTimeout(function() {
@@ -49,13 +52,18 @@ function check_key(event) {
     y = n_y;
   }
 
+  if (x!=1&&is_wall(x,y-1)&&is_wall(x,y+1)&&is_wall(x+1,y)&&is_wall(x+1,y)){
+    document.getElementById("lost").style.display = "block"
+  }
+
 }
 
 function randomize() {
+  document.getElementById("start").style.display = "none"
+  document.getElementById("lost").style.display = "none"
   x = 1;
   y = Math.round(y_cells / 2);
-  generate_table(x_cells, y_cells)
-  generate_walls([1, y_cells], [x_cells, 1])
+  move(x, y)
 }
 
 function generate_table(x, y) {
@@ -155,5 +163,8 @@ function move(x, y) {
   generate_walls([1, y_cells], [x_cells, 1])
   generate_borders(x_cells,y_cells)
   document.getElementById(x + "," + y).innerHTML = '<div class="user"></div>';
+
+  document.getElementById(x_cells + "," + Math.round(y_cells / 2)).innerHTML = '<div class="empty" style="background-color:#1db331"></div>'
+  // style.backgroundColor = "#1db331";
   document.querySelector(".user").style.backgroundColor = color
 }
