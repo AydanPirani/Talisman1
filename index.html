@@ -7,7 +7,16 @@
 </head>
 
 <body id="change" class="">
-  <button type="button" name="button" onclick="randomize()"> RESET</button>
+
+  <div id="choose" class="modal">
+    <div class="modal-content">
+      <label for="favcolor">Select your character's avatar (click me!):</label>
+      <input type="color" id="color" name="favcolor" value="#ff0000"><br><br>
+      <button type="button" name="choose" onclick="chose()"> Choose this Color!</button>
+    </div>
+  </div>
+
+  <button type="button" name="button" class="reset-button" onclick="randomize()"> RESET</button>
   <div id="table" >If you can see this, something's wrong. Please contact Aydan Pirani ASAP.</div>
 
 </body>
