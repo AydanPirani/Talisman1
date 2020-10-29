@@ -12,7 +12,7 @@ move(x, y)
 
 document.onkeydown = check_key;
 
-function chose() {
+function chose() { 
   color = document.getElementById("color").value
   console.log(color)
   document.getElementById("choose").style.display = "none"
