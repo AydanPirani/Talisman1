@@ -9,6 +9,9 @@ while(color != ""){
   setTimeout(function() {console.log("waiting") }, 500);
 }
 
+var a1 = new Audio('buzz.wav');
+var a2 = new Audio('fail.wav')
+
 move(x, y)
 document.getElementById("start").style.display = "block"
 document.onkeydown = check_key;
@@ -41,6 +44,8 @@ function check_key(event) {
   if (is_wall(n_x, n_y)) {
     //hit wall
     t.className = "shake-hard shake-constant";
+    a1.currentTime = 1;
+    a1.play();
     setTimeout(function() {
       t.className = "none";
     }, 500);
@@ -52,8 +57,8 @@ function check_key(event) {
   }
 
   if (is_wall(x,y-1)&&is_wall(x,y+1)&&is_wall(x-1,y)&&is_wall(x+1,y)){
-    var audio = new Audio('fail.mp3');
-    audio.play();
+    a2.currentTime = 0
+    a2.play();
     document.getElementById("lost").style.display = "block"
   }
 
