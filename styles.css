@@ -24,6 +24,8 @@ body {
   width: 100%;
   height: 100%;
   overflow-x:hidden;
+  overflow-y:hidden;
+  font-family: 'Verdana';
 }
 
 table {
@@ -31,15 +33,8 @@ table {
   background-color: black;
 }
 
-.reset-button {
-  width: 100px;
-  height: 40px;
-  background-color: red;
-  font-size: 18px;
-  font-weight: bold;
-  padding-right: 40px;
-  padding-left: 20px;
-  float: right;
+button {
+    font-family: 'Verdana';
 }
 
 .modal-button {

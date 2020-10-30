@@ -1,5 +1,5 @@
-x_cells = Math.round(screen.width / 30)
-y_cells = Math.round(screen.height / 30)
+x_cells = Math.round(screen.width / 25)
+y_cells = Math.round(screen.height / 25)
 document.getElementById("choose").style.display = "block";
 randomize();
 x = 1;
@@ -15,7 +15,6 @@ document.onkeydown = check_key;
 
 function chose() {
   color = document.getElementById("color").value
-  console.log(color)
   document.getElementById("choose").style.display = "none"
   document.querySelector(".user").style.backgroundColor = color
 }
@@ -107,7 +106,7 @@ function generate_walls(LL, UR) {
   y_coord = Math.round(y_l * Math.random()) + UR[1]
 
   x_c=(x_coord>2&&Math.abs(x_coord-LL[0])>2&&Math.abs(x_coord-UR[0])>2)
-  y_c=(y_coord!=13&&Math.abs(y_coord-LL[1])>2&&Math.abs(y_coord-UR [1])>2)
+  y_c=(y_coord!=16&&Math.abs(y_coord-LL[1])>2&&Math.abs(y_coord-UR [1])>2)
 
   //Changes a whole row to a wall
   if (x_c) {
