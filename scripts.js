@@ -52,6 +52,8 @@ function check_key(event) {
   }
 
   if (is_wall(x,y-1)&&is_wall(x,y+1)&&is_wall(x-1,y)&&is_wall(x+1,y)){
+    var audio = new Audio('fail.mp3');
+    audio.play();
     document.getElementById("lost").style.display = "block"
   }
 
